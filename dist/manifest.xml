@@ -8,7 +8,7 @@
   <ProviderName>ISCO</ProviderName>
   <DefaultLocale>ja-JP</DefaultLocale>
   <DisplayName DefaultValue="添付ファイル警告"/>
-  <Description DefaultValue="ローカルファイル添付時に警告を表示します"/>
+  <Description DefaultValue="外部宛メール送信時に添付ファイルの警告を表示します"/>
   <IconUrl DefaultValue="https://hisamatsu-isco.github.io/outlook-addin/assets/icon-64.png"/>
   <HighResolutionIconUrl DefaultValue="https://hisamatsu-isco.github.io/outlook-addin/assets/icon-128.png"/>
   <SupportUrl DefaultValue="https://hisamatsu-isco.github.io/outlook-addin"/>
@@ -47,7 +47,7 @@
             <FunctionFile resid="launchevent.url"/>
             <ExtensionPoint xsi:type="LaunchEvent">
               <LaunchEvents>
-                <LaunchEvent Type="OnMessageSend" FunctionName="onMessageSendHandler" SendMode="PromptUser"/>
+                <LaunchEvent Type="OnMessageSend" FunctionName="onMessageSendHandler" SendMode="SoftBlock"/>
               </LaunchEvents>
               <SourceLocation resid="launchevent.url"/>
             </ExtensionPoint>
