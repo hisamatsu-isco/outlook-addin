@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xsi:type="MailApp">
+  <Id>12345678-1234-1234-1234-123456789012</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>ISCO</ProviderName>
+  <DefaultLocale>ja-JP</DefaultLocale>
+  <DisplayName DefaultValue="添付ファイル警告"/>
+  <Description DefaultValue="ローカルファイル添付時に警告を表示します"/>
+  <IconUrl DefaultValue="https://isco.sharepoint.com/sites/msteams_bcfdc9/Shared%20Documents/OutlookAddin/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://isco.sharepoint.com/sites/msteams_bcfdc9/Shared%20Documents/OutlookAddin/assets/icon-128.png"/>
+  <SupportUrl DefaultValue="https://isco.sharepoint.com"/>
+  <AppDomains>
+    <AppDomain>https://isco.sharepoint.com</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.8"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemEdit">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://isco.sharepoint.com/sites/msteams_bcfdc9/Shared%20Documents/OutlookAddin/taskpane.html"/>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Edit"/>
+  </Rule>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+      <Requirements>
+        <bt:Sets>
+          <bt:Set Name="Mailbox" MinVersion="1.8"/>
+        </bt:Sets>
+      </Requirements>
+      <Hosts>
+        <Host xsi:type="MailHost">
+          <DesktopFormFactor>
+            <FunctionFile resid="launchevent.url"/>
+            <ExtensionPoint xsi:type="LaunchEvent">
+              <LaunchEvents>
+                <LaunchEvent Type="OnMessageSend" FunctionName="onMessageSendHandler" SendMode="PromptUser"/>
+              </LaunchEvents>
+              <SourceLocation resid="launchevent.url"/>
+            </ExtensionPoint>
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+      <Resources>
+        <bt:Urls>
+          <bt:Url id="launchevent.url" DefaultValue="https://isco.sharepoint.com/sites/msteams_bcfdc9/Shared%20Documents/OutlookAddin/launchevent.js"/>
+        </bt:Urls>
+      </Resources>
+    </VersionOverrides>
+  </VersionOverrides>
+</OfficeApp>
