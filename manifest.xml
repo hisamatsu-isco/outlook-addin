@@ -4,7 +4,7 @@ cat > ~/attachment-warning/manifest.xml << 'MANIFESTEOF'
   <Id>c518374a-649b-4594-b901-adafeaa0b4a5</Id>
   <Version>1.0.0.3</Version>
   <ProviderName>ISCO</ProviderName>
-  <DefaultLocale>en-US</DefaultLocale>
+  <DefaultLocale>ja-JP</DefaultLocale>
   <DisplayName DefaultValue="Attachment Warning"/>
   <Description DefaultValue="Warns about file attachments"/>
   <IconUrl DefaultValue="https://hisamatsu-isco.github.io/outlook-addin/assets/icon-64.png"/>
