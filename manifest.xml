@@ -8,7 +8,7 @@
   <Description DefaultValue="Warns about file attachments"/>
   <IconUrl DefaultValue="https://hisamatsu-isco.github.io/outlook-addin/assets/icon-64.png"/>
   <HighResolutionIconUrl DefaultValue="https://hisamatsu-isco.github.io/outlook-addin/assets/icon-128.png"/>
-  <SupportUrl DefaultValue="https://hisamatsu-isco.github.io/outlook-addin"/>
+  <SupportUrl DefaultValue="https://hisamatsu-isco.github.io/outlook-addin/taskpane.html"/>
   <AppDomains>
     <AppDomain>https://hisamatsu-isco.github.io</AppDomain>
   </AppDomains>
