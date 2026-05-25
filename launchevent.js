@@ -1,5 +1,8 @@
-Office.onReady();
-Office.actions.associate("onMessageSendHandler", function(event) {
+Office.onReady(function() {
+  Office.actions.associate("onMessageSendHandler", onMessageSendHandler);
+});
+
+function onMessageSendHandler(event) {
   Office.context.mailbox.item.attachments.getAsync(function(result) {
     if (result.status === Office.AsyncResultStatus.Failed) {
       event.completed({ allowEvent: true });
@@ -17,13 +20,10 @@ Office.actions.associate("onMessageSendHandler", function(event) {
     if (hasFile) {
       event.completed({
         allowEvent: false,
-        errorMessage: "データ添付ではなく、OneDrive等のリンクにて共有を検討してください",
-        cancelLabel: "OneDrive等リンクに切り替える",
-        commandId: "msgComposeOpenPaneButton",
-        contextData: JSON.stringify({ a: 1 })
+        errorMessage: "データ添付ではなく、OneDrive等のリンクにて共有を検討してください"
       });
     } else {
       event.completed({ allowEvent: true });
     }
   });
-});
+}
