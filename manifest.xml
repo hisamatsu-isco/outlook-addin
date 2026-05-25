@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
-  xsi:type="MailApp">
-  <Id>12345678-1234-1234-1234-123456789012</Id>
-  <Version>1.0.0.0</Version>
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xsi:type="MailApp">
+  <Id>c518374a-649b-4594-b901-adafeaa0b4a5</Id>
+  <Version>1.0.0.1</Version>
   <ProviderName>ISCO</ProviderName>
   <DefaultLocale>ja-JP</DefaultLocale>
   <DisplayName DefaultValue="添付ファイル警告"/>
@@ -20,7 +20,35 @@
   </Hosts>
   <Requirements>
     <Sets>
-      <Set Name="Mailbox" MinVersion="1.8"/>
+      <Set Name="Mailbox" MinVersion="1.12"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemEdit"
+
+cat > ~/attachment-warning/manifest.xml << 'EOF'
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xsi:type="MailApp">
+  <Version>1.0.0.1</Version>
+  <ProviderName>ISCO</ProviderName>
+  <DefaultLocale>ja-JP</DefaultLocale>
+  <DisplayName DefaultValue="添付ファイル警告"/>
+  <Description DefaultValue="外部宛メール送信時に添付ファイルの警告を表示します"/>
+  <IconUrl DefaultValue="https://hisamatsu-isco.github.io/outlook-addin/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://hisamatsu-isco.github.io/outlook-addin/assets/icon-128.png"/>
+  <SupportUrl DefaultValue="https://hisamatsu-isco.github.io/outlook-addin"/>
+  <AppDomains>
+    <AppDomain>https://hisamatsu-isco.github.io</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.12"/>
     </Sets>
   </Requirements>
   <FormSettings>
@@ -38,7 +66,7 @@
     <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
       <Requirements>
         <bt:Sets>
-          <bt:Set Name="Mailbox" MinVersion="1.8"/>
+          <bt:Set Name="Mailbox" MinVersion="1.12"/>
         </bt:Sets>
       </Requirements>
       <Hosts>
@@ -47,7 +75,7 @@
             <FunctionFile resid="launchevent.url"/>
             <ExtensionPoint xsi:type="LaunchEvent">
               <LaunchEvents>
-                <LaunchEvent Type="OnMessageSend" FunctionName="onMessageSendHandler" SendMode="SoftBlock"/>
+                <LaunchEvent Type="OnMessageSend" FunctionName="onMessageSendHandler" SendMode="PromptUser"/>
               </LaunchEvents>
               <SourceLocation resid="launchevent.url"/>
             </ExtensionPoint>
