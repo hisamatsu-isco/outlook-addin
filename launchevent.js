@@ -1,2 +1,29 @@
-Office.onReady(),Office.actions.associate("onMessageSendHandler",function(e){Office.context.mailbox.item.attachments.getAsync(function(t){if(t.status!==Office.AsyncResultStatus.Failed){for(var a=t.value,n=!1,c=0;c<a.length;c++){var l=a[c];if("cloud"!==l.attachmentType&&l.attachmentType!==Office.MailboxEnums.AttachmentType.Cloud){n=!0;break}}n?e.completed({allowEvent:!1,errorMessage:"ファイルが直接添付されています。\n\nOneDriveにアップロードしてリンクで共有することを推奨します。\n\nそのまま送信する場合は「とにかく送信」を押してください。"}):e.completed({allowEvent:!0})}else e.completed({allowEvent:!0})})});
-//# sourceMappingURL=launchevent.js.map
+Office.onReady();
+Office.actions.associate("onMessageSendHandler", function(event) {
+  Office.context.mailbox.item.attachments.getAsync(function(result) {
+    if (result.status === Office.AsyncResultStatus.Failed) {
+      event.completed({ allowEvent: true });
+      return;
+    }
+    var attachments = result.value;
+    var hasFile = false;
+    for (var i = 0; i < attachments.length; i++) {
+      var att = attachments[i];
+      if (att.attachmentType !== "cloud" && att.attachmentType !== Office.MailboxEnums.AttachmentType.Cloud) {
+        hasFile = true;
+        break;
+      }
+    }
+    if (hasFile) {
+      event.completed({
+        allowEvent: false,
+        errorMessage: "データ添付ではなく、OneDrive等のリンクにて共有を検討してください",
+        cancelLabel: "OneDrive等リンクに切り替える",
+        commandId: "msgComposeOpenPaneButton",
+        contextData: JSON.stringify({ a: 1 })
+      });
+    } else {
+      event.completed({ allowEvent: true });
+    }
+  });
+});
