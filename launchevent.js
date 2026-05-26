@@ -8,13 +8,17 @@ Office.onReady(function() {
 
 function onMessageSendHandler(event) {
   console.log("[AttachmentWarning] onMessageSendHandler called");
-  Office.context.mailbox.item.attachments.getAsync(function(result) {
-    console.log("[AttachmentWarning] attachments result:", result.status, result.value);
+  var item = Office.context.mailbox.item;
+  console.log("[AttachmentWarning] item:", item);
+  
+  item.getAttachmentsAsync(function(result) {
+    console.log("[AttachmentWarning] getAttachmentsAsync result:", result.status, result.value);
     if (result.status === Office.AsyncResultStatus.Failed) {
+      console.log("[AttachmentWarning] failed, allowing event");
       event.completed({ allowEvent: true });
       return;
     }
-    var attachments = result.value;
+    var attachments = result.value || [];
     var hasFile = false;
     for (var i = 0; i < attachments.length; i++) {
       var att = attachments[i];
