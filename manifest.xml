@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
   <Id>ad4b4bbc-83de-48e2-8fb4-6f8e4bb8a643</Id>
-  <Version>3.0.0.2</Version>
+  <Version>3.0.0.3</Version>
   <ProviderName>ISCO</ProviderName>
   <DefaultLocale>ja-JP</DefaultLocale>
   <DisplayName DefaultValue="Attachment Warning v4"/>
@@ -64,7 +64,7 @@
           <bt:Image id="Icon.80x80" DefaultValue="https://hisamatsu-isco.github.io/outlook-addin/assets/icon-128.png"/>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="JSRuntime.Url" DefaultValue="https://hisamatsu-isco.github.io/outlook-addin/launchevent.js"/>
+          <bt:Url id="JSRuntime.Url" DefaultValue="https://hisamatsu-isco.github.io/outlook-addin/launchevent2.js"/>
           <bt:Url id="WebViewRuntime.Url" DefaultValue="https://hisamatsu-isco.github.io/outlook-addin/commands.html"/>
         </bt:Urls>
         <bt:ShortStrings>
